@@ -1,6 +1,5 @@
-package momonyan.t.mvvm_study.ViewModel
+package momonyan.t.mvvm_study.view_model
 
-import android.view.LayoutInflater
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 

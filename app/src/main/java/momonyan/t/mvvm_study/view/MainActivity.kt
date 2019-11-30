@@ -1,12 +1,12 @@
-package momonyan.t.mvvm_study
+package momonyan.t.mvvm_study.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_main.*
-import momonyan.t.mvvm_study.ViewModel.ContentViewModel
+import momonyan.t.mvvm_study.R
+import momonyan.t.mvvm_study.view_model.ContentViewModel
 
 class MainActivity : AppCompatActivity() {
 
