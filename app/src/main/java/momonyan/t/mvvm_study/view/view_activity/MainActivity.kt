@@ -1,4 +1,4 @@
-package momonyan.t.mvvm_study.view
+package momonyan.t.mvvm_study.view.view_activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -5,18 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="momonyan.t.mvvm_study.view_model.ItemViewModel" />
-
         <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ItemActivity">
+        tools:context=".view.view_activity.ItemActivity">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
