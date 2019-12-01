@@ -11,13 +11,13 @@ import momonyan.t.mvvm_study.view_model.ItemViewModel
 class ItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.count_activity_layout)
         //ViewModelItem
         val itemViewModel = ViewModelProviders.of(this).get(ItemViewModel::class.java)
 
         // DataBindingのインスタンスを作成（onCreateの外でもよい）
         val binding: ItemActivityLayoutBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+            DataBindingUtil.setContentView(this, R.layout.count_activity_layout)
         // ViewModelのインスタンスを作成を設定
         binding.viewModel = itemViewModel
         // ライフサイクル所有者を設定

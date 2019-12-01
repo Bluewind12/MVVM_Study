@@ -5,24 +5,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import momonyan.t.mvvm_study.R
+import kotlinx.android.synthetic.main.count_activity_layout.*
+import kotlinx.android.synthetic.main.count_activity_layout.view.*
+import momonyan.t.mvvm_study.databinding.CountActivityLayoutBinding
 import momonyan.t.mvvm_study.view_model.ContentViewModel
 
 class CountFragment : Fragment() {
 
+    private val viewModel: ContentViewModel by activityViewModels()
+
+    private lateinit var fragmentListBinding: CountActivityLayoutBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fragmentListBinding = CountActivityLayoutBinding.inflate(inflater, container, false).apply {
+            viewModel = this@CountFragment.viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
+        return fragmentListBinding.root
+    }
 
-        val view = inflater.inflate(R.layout.activity_main, container, false)
-        //ViewModel
-        val viewModel = ViewModelProviders.of(this).get(ContentViewModel::class.java)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //比較用
         var count: Int = 0
         //ボタンクリック
@@ -45,6 +52,5 @@ class CountFragment : Fragment() {
         //オブザーバーセット。
         viewModel.viewModelLiveDataCount.observe(viewLifecycleOwner, countObserver)
 
-        return view
     }
 }
