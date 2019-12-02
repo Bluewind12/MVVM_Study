@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.view_activity.ItemActivity" />
+        <activity android:name=".view.view_activity.CountActivity" />
     </application>
+
 
 </manifest>

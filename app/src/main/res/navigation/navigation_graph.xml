@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/countFragment"
         android:name="momonyan.t.mvvm_study.view.view_fragment.CountFragment"
-        android:label="CountFragment" />
+        android:label="CountFragment" >
+        <action
+            android:id="@+id/action_countFragment_to_itemViewFragment"
+            app:destination="@id/itemViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemViewFragment"
+        android:name="momonyan.t.mvvm_study.view.view_fragment.ItemViewFragment"
+        android:label="ItemViewFragment" />
 </navigation>

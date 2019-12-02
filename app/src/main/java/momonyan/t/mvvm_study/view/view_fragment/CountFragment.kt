@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.count_activity_layout.*
 import kotlinx.android.synthetic.main.count_activity_layout.view.*
 import momonyan.t.mvvm_study.databinding.CountActivityLayoutBinding
@@ -16,17 +17,17 @@ class CountFragment : Fragment() {
 
     private val viewModel: ContentViewModel by activityViewModels()
 
-    private lateinit var fragmentListBinding: CountActivityLayoutBinding
+    private lateinit var fragmentBinding: CountActivityLayoutBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fragmentListBinding = CountActivityLayoutBinding.inflate(inflater, container, false).apply {
+        fragmentBinding = CountActivityLayoutBinding.inflate(inflater, container, false).apply {
             viewModel = this@CountFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
         }
-        return fragmentListBinding.root
+        return fragmentBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,5 +53,18 @@ class CountFragment : Fragment() {
         //オブザーバーセット。
         viewModel.viewModelLiveDataCount.observe(viewLifecycleOwner, countObserver)
 
+        val fabObserver = Observer<Boolean> {
+            if (it) {
+                navigateToItemList()
+            }
+        }
+
+        viewModel.onFabEvent.observe(viewLifecycleOwner, fabObserver)
+
+    }
+
+    private fun navigateToItemList() {
+        val action = CountFragmentDirections.actionCountFragmentToItemViewFragment()
+        findNavController().navigate(action)
     }
 }
